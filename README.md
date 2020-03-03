@@ -1,3 +1,4 @@
+<img src="public/image/screen.png">
 # What's your favorite color
 
 ## project documentation
