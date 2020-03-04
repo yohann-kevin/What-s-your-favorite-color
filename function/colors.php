@@ -1,4 +1,5 @@
 <?php
+//I get the number of votes by color
 function red() {
         global $bdd;
 

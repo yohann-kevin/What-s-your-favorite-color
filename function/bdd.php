@@ -1,5 +1,5 @@
 <?php
-
+//link my database to the project
 function bdd(){
     $data='mysql:dbname=testgraph;host=127.0.0.1';
     $user='root';

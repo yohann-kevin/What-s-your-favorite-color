@@ -34,15 +34,19 @@ include_once 'layouts/header.php';
             </form>
             <?php 
             if(isset($_POST['submit'])) {
+                // I create variables for comparison
                 $red = 'Red';
                 $blue = 'Blue';
                 $yellow = 'Yellow';
                 $green = 'Green';
                 $purple = 'Purple';
                 $orange = 'Orange';
+                // I get the selected value
                 $selectedVal = $_POST['color'];
                 echo "You have selected :" .$selectedVal;
+                // I compare the present values ​​to find the one that was selected to increment it
                 if($selectedVal === $red) {
+                    // I return the new value to my database
                     $u = $bdd->query("UPDATE colors SET number = number + 1 WHERE id = 1");
                     header('Location: chart.php');
 
@@ -68,7 +72,6 @@ include_once 'layouts/header.php';
 
                 }
             }
-            
             ?>
 
         </section>
