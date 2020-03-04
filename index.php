@@ -8,50 +8,69 @@ $w = yellow();
 $x = green();
 $y = purple();
 $z = orange();
+include_once 'layouts/header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
-    <title>Test graph vertical</title>
-    <style>
-        /* set the CSS */
+    <main id="home">
+        <section id="legend">
+            <p> Hello I am doing a very important survey. 
+                I would like to know what is your favorite color 
+                You will be able to see the results of the survey right after</p>
+        </section>
+        <section id="colors">
+            <form id="form" action="#" method="post">
+                <label for="color">Choose a color:</label>
 
-        body {
-            font: 12px Arial;
-        }
+                <select id="color" name="color">
+                    <option value="">--Please choose an color--</option>
+                    <option class="red" value="Red">Red</option>
+                    <option class="blue" value="Blue">Blue</option>
+                    <option class="yellow" value="Yellow">Yellow</option>
+                    <option class="green" value="Green">Green</option>
+                    <option class="purple" value="Purple">Purple</option>
+                    <option class="orange" value="Orange">Orange</option>
+                </select>
+                <input type="submit" name="submit" value="read">
+            </form>
+            <?php 
+            if(isset($_POST['submit'])) {
+                $red = 'Red';
+                $blue = 'Blue';
+                $yellow = 'Yellow';
+                $green = 'Green';
+                $purple = 'Purple';
+                $orange = 'Orange';
+                $selectedVal = $_POST['color'];
+                echo "You have selected :" .$selectedVal;
+                if($selectedVal === $red) {
+                    $u = $bdd->query("UPDATE colors SET number = number + 1 WHERE id = 1");
+                    header('Location: chart.php');
 
-        path {
-            stroke: steelblue;
-            stroke-width: 2;
-            fill: none;
-        }
+                } else if ($selectedVal === $blue) {
+                    $v = $bdd->query("UPDATE colors SET number = number + 1 WHERE id = 2");
+                    header('Location: chart.php');
 
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: grey;
-            stroke-width: 1;
-            shape-rendering: crispEdges;
-        }
-    </style>
-</head>
+                } else if ($selectedVal === $yellow) {
+                    $w = $bdd->query("UPDATE colors SET number = number + 1 WHERE id = 3");
+                    header('Location: chart.php');
 
-<body>
+                } else if ($selectedVal === $green) {
+                    $x = $bdd->query("UPDATE colors SET number = number + 1 WHERE id = 4");
+                    header('Location: chart.php');
 
-    <canvas id="myChart" width="400" height="200"></canvas>
-    <script>
-        var u = '<?= $u['number'] ?>';
-        var v = '<?= $v['number'] ?>';
-        var w = '<?= $w['number'] ?>';
-        var x = '<?= $x['number'] ?>';
-        var y = '<?= $y['number'] ?>';
-        var z = '<?= $z['number'] ?>';
-    </script>
-    
-</body>
-    <script type="text/javascript" src="public/script/main.js"></script>
-</html>
+                } else if ($selectedVal === $purple) {
+                    $y = $bdd->query("UPDATE colors SET number = number + 1 WHERE id = 5");
+                    header('Location: chart.php');
+
+                } else if ($selectedVal === $orange) {
+                    $z = $bdd->query("UPDATE colors SET number = number + 1 WHERE id = 6");
+                    header('Location: chart.php');
+
+                }
+            }
+            
+            ?>
+
+        </section>
+    </main>
+<?php include_once 'layouts/footer.php' ?>
