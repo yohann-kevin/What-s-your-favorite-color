@@ -1,4 +1,7 @@
+//diagram made with chart.js
+//I create a array where I put the number of votes by color and I display it
 var tabTest1 = [u, v, w, x, y, z];
+//I declare the context
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
     type: 'bar',
